@@ -142,4 +142,3 @@
     enabled: yes
     state: restarted
   when: netbox_setup
- 

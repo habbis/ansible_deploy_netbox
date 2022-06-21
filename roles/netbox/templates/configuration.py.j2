@@ -226,7 +226,6 @@ DATETIME_FORMAT = 'N j, Y g:i a'
 SHORT_DATETIME_FORMAT = 'Y-m-d H:i'
 
 CSRF_TRUSTED_ORIGINS = (
-    'http://netbox.habbfarm.net',
-    'https://netbox.habbfarm.net',
-    'http://hf-t-web1.no.habbfarm.net',
+    'http://{{ netbox_fqdn }}',
+    'https://{{ netbox_fqdn }}',
 )

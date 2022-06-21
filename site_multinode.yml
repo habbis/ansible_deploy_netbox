@@ -1,11 +1,11 @@
 ---
-- name: setup test netbox
+- name: setup netbox
   gather_facts: yes
   #remote_user: root
   remote_user: ansible
   become: yes
   become_method: sudo
-  hosts: prod-netbox
+  hosts: netbox
   vars_files:
     -  defaults/main.yml
     #-  defaults/secrets.yml
@@ -13,13 +13,13 @@
   roles:
     - netbox
 
-- name: setup test postgres
+- name: setup postgres
   gather_facts: yes
   #remote_user: root
   remote_user: ansible
   become: yes
   become_method: sudo
-  hosts: prod-postgres
+  hosts: postgres
   vars_files:
     -  defaults/main.yml
     #-  defaults/secrets.yml
@@ -28,13 +28,13 @@
     - postgres
 
 
-- name: setup test haproxy
+- name: setup haproxy
   gather_facts: yes
   #remote_user: root
   remote_user: ansible
   become: yes
   become_method: sudo
-  hosts: prod-happroxy
+  hosts: happroxy
   vars_files:
     -  defaults/main.yml
     #-  defaults/secrets.yml

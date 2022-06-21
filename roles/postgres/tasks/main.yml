@@ -44,7 +44,7 @@
     dest: "{{ postgres_pq_hba_conf }}"
     contype: host
     users: "{{ postgres_user }}"
-    source: "{{ netbox_host }}"
+    source: "{{ netbox_host }}/{{ netbox_netmask }}"
     databases: "{{ postgres_database }}"
     method: "{{ postgres_auth_method }}"
     state: present
