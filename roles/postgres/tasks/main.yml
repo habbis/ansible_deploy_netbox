@@ -34,11 +34,11 @@
     enabled: yes
     state: restarted
 
-- name: Create {{ postgres_database }}
-  community.postgresql.postgresql_db:
-    name: "{{ postgres_database }}"
-    state: present
-  become_user: postgres
+#- name: Create {{ postgres_database }}
+#  community.postgresql.postgresql_db:
+#    name: "{{ postgres_database }}"
+#    state: present
+#  become_user: postgres
 
 - name: create {{ postgres_user }} give access to {{ postgre_database }}
   community.postgresql.postgresql_user:
@@ -60,3 +60,9 @@
     method: "{{ postgres_auth_method }}"
     state: present
   become_user: postgres
+
+- name: restart postgres servies so tuning can take effect
+  ansible.builtin.systemd:
+    name: postgresql
+    enabled: yes
+    state: restarted
