@@ -1,21 +1,17 @@
-[web-prod]
+[prod-netbox]
 hf-web1.no.habbfarm.net
 
-[mysql-prod]
-hf-mariadb1.no.habbfarm.net
+[prod-postgres]
+hf-psql1.no.habbfarm.net
 
-[haproxy-prod]
+[prod-haproxy]
 hf-haproxy1.no.habbfarm.net
 
-[web-test]
+[test-netbox]
 hf-t-web1.no.habbfarm.net
 
-[mysql-test]
-hf-t-mariadb1.no.habbfarm.net
+[test-postgres]
+hf-t-psql1.no.habbfarm.net
 
-[haproxy-test]
+[test-haproxy]
 hf-t-haproxy1.no.habbfarm.net
-
-[monitoring]
-nagios
-
