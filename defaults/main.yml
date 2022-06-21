@@ -38,6 +38,10 @@ netbox_apache_servername: netbox.habbfarm.net
 # to generate
 # python3  /opt/netbox/netbox/generate_secret_key.py
 netbox_secret_key: Jw%@guQJu8YDucvqkFsjRtVHIwx^Mp(Qb%BUFCm=TxJsgSS&42
+# set to true when upgrading netbox
+netbox_upgrade: false
+# set to true when setting up netbox
+netbox_setup: false
 
 
 # haproxy

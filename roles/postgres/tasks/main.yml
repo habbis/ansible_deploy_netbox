@@ -19,26 +19,14 @@
     owner: postgres
     group: postgres
     mode: '0644'
+  when: netbox_setup
 
-- name: deploy pq_hba_conf
-  ansible.builtin.template:
-    src: pg_hba.conf.j2
-    dest: "{{ postgres_pq_hba_conf }}"
-    owner: postgres
-    group: postgres
-    mode: '0640'
-
-- name: restart postgres servies so tuning can take effect
-  ansible.builtin.systemd:
-    name: postgresql
-    enabled: yes
-    state: restarted
-
-#- name: Create {{ postgres_database }}
-#  community.postgresql.postgresql_db:
-#    name: "{{ postgres_database }}"
-#    state: present
-#  become_user: postgres
+- name: Create {{ postgres_database }}
+  community.postgresql.postgresql_db:
+    name: "{{ postgres_database }}"
+    state: present
+  become_user: postgres
+  when: netbox_setup
 
 - name: create {{ postgres_user }} give access to {{ postgre_database }}
   community.postgresql.postgresql_user:
@@ -49,6 +37,7 @@
     expires: infinity
     state: present
   become_user: postgres
+  when: netbox_setup
 
 - name: Grant user {{ postgres_user }} access to {{ postgres_database}}
   community.postgresql.postgresql_pg_hba:
@@ -60,9 +49,11 @@
     method: "{{ postgres_auth_method }}"
     state: present
   become_user: postgres
+  when: netbox_setup
 
 - name: restart postgres servies so tuning can take effect
   ansible.builtin.systemd:
     name: postgresql
     enabled: yes
     state: restarted
+  when: netbox_setup
